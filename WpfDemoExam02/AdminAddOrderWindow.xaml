@@ -1,0 +1,34 @@
+﻿<Window x:Class="WpfDemoExam02.AdminAddOrderWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfDemoExam02"
+        mc:Ignorable="d"
+        Icon="/Icon/icon.ico"
+        FontFamily="Comic Sans MS"
+        Title="Добавить заказ" Height="320" Width="270" Loaded="Window_Loaded">
+    <Grid Background="#ABCFCE">
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Артикул:"/>
+            <ComboBox x:Name="articleCb" Width="200" DisplayMemberPath="Name" SelectionChanged="articleCb_SelectionChanged" SelectedValuePath="Id"/>
+
+            <TextBlock Text="Статус заказа:"/>
+            <ComboBox x:Name="statusesCb" Width="200" DisplayMemberPath="Name" SelectedValuePath="Id"/>
+            
+            <TextBlock Text="Адрес пункта выдачи:"/>
+            <ComboBox x:Name="addressesCb" Width="200" DisplayMemberPath="FullAddress" SelectedValuePath="Id"/>
+
+            <TextBlock Text="Количество:"/>
+            <TextBox x:Name="amountTb" PreviewTextInput="amountTb_PreviewTextInput" LostFocus="amountTb_LostFocus"/>
+
+            <TextBlock Text="Дата заказа:"/>
+            <DatePicker x:Name="orderDateDp"/>
+            
+            <TextBlock Text="Дата выдачи:"/>
+            <DatePicker x:Name="deliveryDateDp"/>
+
+            <Button x:Name="createOrderButton" Content="Создать заказ" Margin="0,10" Click="createOrderButton_Click" Background="#546F94"/>
+        </StackPanel>
+    </Grid>
+</Window>

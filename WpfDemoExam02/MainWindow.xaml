@@ -1,0 +1,48 @@
+﻿<Window x:Class="WpfDemoExam02.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfDemoExam02"
+        mc:Ignorable="d"
+        Icon="/Icon/icon.ico"
+        FontFamily="Comic Sans MS"
+        Title="Просмотр товаров" Height="450" Width="950" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Background="#ABCFCE">
+            <Button Width="120" HorizontalAlignment="Left" x:Name="logoutBtn" Content="Выйти" Click="logoutBtn_Click" Background="#546F94"/>
+            <Button Width="120" Content="Корзина" x:Name="cartBtn" Margin="25,0,0,0" Click="cartBtn_Click" Visibility="Collapsed" Background="#546F94"/>
+        </StackPanel>
+        <Label Grid.Row="0" x:Name="userInfoLb" HorizontalAlignment="Right"/>
+
+        <WrapPanel Grid.Row="1" Orientation="Horizontal" x:Name="filtersSp" HorizontalAlignment="Left" Margin="0,20,0,0">
+            <TextBlock Text="Категория:" VerticalAlignment="Center"/>
+            <ComboBox x:Name="filterCb" Width="90" Margin="5,0,20,0" DisplayMemberPath="Name" SelectionChanged="filterCb_SelectionChanged"/>
+            <TextBlock Text="Сортировать по:" VerticalAlignment="Center"/>
+            <ComboBox x:Name="sortCb" Width="90" Margin="5,0,20,0" SelectionChanged="sortCb_SelectionChanged"/>
+            <TextBlock Text="Поиск:" VerticalAlignment="Center"/>
+            <TextBox x:Name="searchBarTb" Width="100" Margin="5,0,0,0" TextChanged="searchBarTb_TextChanged"/>
+
+            <TextBlock Text="Скидка:" VerticalAlignment="Center" Margin="5,0,0,0"/>
+            <ComboBox x:Name="discountsCb" Width="90" Margin="5,0,20,0" SelectionChanged="discountsCb_SelectionChanged"/>
+
+            <TextBlock Text="Количество:" VerticalAlignment="Center"/>
+            <TextBox x:Name="amountTb" Width="60" Margin="5,0,0,0" TextChanged="amountTb_TextChanged" PreviewTextInput="amountTb_PreviewTextInput"/>
+            <Button x:Name="clearFiltersBtn" Content="Очистить" Width="80" Margin="15,0,0,0" Click="clearFiltersBtn_Click" Background="#546F94"/>
+        </WrapPanel>
+
+        <ListView Grid.Row="2" x:Name="productsLv" SelectionChanged="productsLv_SelectionChanged">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
+    </Grid>
+</Window>
